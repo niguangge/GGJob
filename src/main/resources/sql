@@ -1,0 +1,16 @@
+-- ----------------------------
+--  Table structure for `user`
+-- ----------------------------
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL COMMENT '主键',
+  `name` varchar(20) DEFAULT NULL,
+  `birthday` date DEFAULT NULL COMMENT '生日',
+  `address` varchar(256) DEFAULT NULL COMMENT '地址',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+--  Records 
+-- ----------------------------
+INSERT INTO `user` VALUES ('1','张三','1994-10-20','杭州市'), ('2','李四','1996-02-19','上海市');

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotpot.dao.CommentTrustListMapper" >
+  <resultMap id="BaseResultMap" type="com.hotpot.entity.CommentTrustList" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <id column="user_id" property="userId" jdbcType="VARCHAR" />
+    <result column="is_trust" property="isTrust" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comment_id, user_id, is_trust
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment_trust_list
+    where comment_id = #{commentId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from comment_trust_list
+    where comment_id = #{commentId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.hotpot.entity.CommentTrustList" >
+    insert into comment_trust_list (comment_id, user_id, is_trust
+      )
+    values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{isTrust,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotpot.entity.CommentTrustList" >
+    insert into comment_trust_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="isTrust != null" >
+        is_trust,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="isTrust != null" >
+        #{isTrust,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotpot.entity.CommentTrustList" >
+    update comment_trust_list
+    <set >
+      <if test="isTrust != null" >
+        is_trust = #{isTrust,jdbcType=TINYINT},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotpot.entity.CommentTrustList" >
+    update comment_trust_list
+    set is_trust = #{isTrust,jdbcType=TINYINT}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,26 +1,44 @@
 package com.hotpot.serviceIml;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hotpot.entity.User;
-import com.hotpot.mapper.IUserMapper;
-import com.hotpot.service.IUserService;
+import com.hotpot.dao.UserInfoMapper;
+import com.hotpot.entity.UserInfo;
+import com.hotpot.service.UserService;
 
 @Service
-public class UserServiceImpl implements IUserService{
+public class UserServiceImpl implements UserService{
 
     @Autowired
-    private IUserMapper mapper;
-
-    public List<User> queryAllUser() throws Exception {
-        return mapper.queryAllUser();
+    private UserInfoMapper mapper;
+    
+    public void addUser(String name ,String ip) throws Exception{
+    	UserInfo record = new UserInfo();
+    	record.setUserName(name);
+    	record.setUserIp(ip);
+    	Date currentTime = new Date();
+    	record.setLatestLoginTime(currentTime);
+    	record.setRegistrationTime(currentTime);
+    	mapper.insertSelective(record);
     }
 
-    public void deleteUser(Integer id) throws Exception {
-        mapper.deleteUser(id);
+    public UserInfo queryUserByName(String name) throws Exception{
+		return null;
+    	
+    }
+    
+    public UserInfo queryUserByip(String ip) throws Exception{
+		return null;
+    	
+    }
+    
+    public UserInfo queryUserByid(Integer id) throws Exception{
+		return null;
+    	
     }
 
 }

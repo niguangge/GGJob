@@ -1,5 +1,7 @@
 package com.hotpot.entity;
 
+import java.util.Date;
+
 public class OfferInfo {
     private Integer offerId;
 
@@ -7,7 +9,7 @@ public class OfferInfo {
 
     private String creatorId;
 
-    private String createTime;
+    private Date createTime;
 
     private String content;
 
@@ -41,12 +43,12 @@ public class OfferInfo {
         this.creatorId = creatorId == null ? null : creatorId.trim();
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime == null ? null : createTime.trim();
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getContent() {

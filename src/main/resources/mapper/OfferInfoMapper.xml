@@ -5,7 +5,7 @@
     <id column="offer_id" property="offerId" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="creator_id" property="creatorId" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="DATE" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="trust_number" property="trustNumber" jdbcType="INTEGER" />
     <result column="heat" property="heat" jdbcType="INTEGER" />
@@ -29,7 +29,7 @@
       create_time, content, trust_number, 
       heat, comments_number)
     values (#{offerId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{trustNumber,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=DATE}, #{content,jdbcType=VARCHAR}, #{trustNumber,jdbcType=INTEGER}, 
       #{heat,jdbcType=INTEGER}, #{commentsNumber,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hotpot.entity.OfferInfo" >
@@ -71,7 +71,7 @@
         #{creatorId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=VARCHAR},
+        #{createTime,jdbcType=DATE},
       </if>
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
@@ -97,7 +97,7 @@
         creator_id = #{creatorId,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=VARCHAR},
+        create_time = #{createTime,jdbcType=DATE},
       </if>
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
@@ -118,7 +118,7 @@
     update offer_info
     set title = #{title,jdbcType=VARCHAR},
       creator_id = #{creatorId,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=DATE},
       content = #{content,jdbcType=VARCHAR},
       trust_number = #{trustNumber,jdbcType=INTEGER},
       heat = #{heat,jdbcType=INTEGER},

@@ -5,11 +5,12 @@
     <id column="offer_id" property="offerId" jdbcType="INTEGER" />
     <id column="comment_id" property="commentId" jdbcType="INTEGER" />
     <result column="commentor_id" property="commentorId" jdbcType="VARCHAR" />
+    <result column="comment_time" property="commentTime" jdbcType="DATE" />
     <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
     <result column="like_number" property="likeNumber" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    offer_id, comment_id, commentor_id, comment_content, like_number
+    offer_id, comment_id, commentor_id, comment_time, comment_content, like_number
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
     select 
@@ -25,9 +26,11 @@
   </delete>
   <insert id="insert" parameterType="com.hotpot.entity.OfferComments" >
     insert into offer_comments (offer_id, comment_id, commentor_id, 
-      comment_content, like_number)
+      comment_time, comment_content, like_number
+      )
     values (#{offerId,jdbcType=INTEGER}, #{commentId,jdbcType=INTEGER}, #{commentorId,jdbcType=VARCHAR}, 
-      #{commentContent,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER})
+      #{commentTime,jdbcType=DATE}, #{commentContent,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hotpot.entity.OfferComments" >
     insert into offer_comments
@@ -40,6 +43,9 @@
       </if>
       <if test="commentorId != null" >
         commentor_id,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
       </if>
       <if test="commentContent != null" >
         comment_content,
@@ -58,6 +64,9 @@
       <if test="commentorId != null" >
         #{commentorId,jdbcType=VARCHAR},
       </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=DATE},
+      </if>
       <if test="commentContent != null" >
         #{commentContent,jdbcType=VARCHAR},
       </if>
@@ -72,6 +81,9 @@
       <if test="commentorId != null" >
         commentor_id = #{commentorId,jdbcType=VARCHAR},
       </if>
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=DATE},
+      </if>
       <if test="commentContent != null" >
         comment_content = #{commentContent,jdbcType=VARCHAR},
       </if>
@@ -85,6 +97,7 @@
   <update id="updateByPrimaryKey" parameterType="com.hotpot.entity.OfferComments" >
     update offer_comments
     set commentor_id = #{commentorId,jdbcType=VARCHAR},
+      comment_time = #{commentTime,jdbcType=DATE},
       comment_content = #{commentContent,jdbcType=VARCHAR},
       like_number = #{likeNumber,jdbcType=INTEGER}
     where offer_id = #{offerId,jdbcType=INTEGER}

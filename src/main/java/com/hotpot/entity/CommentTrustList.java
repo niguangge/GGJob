@@ -5,7 +5,7 @@ public class CommentTrustList {
 
     private String userId;
 
-    private Byte isTrust;
+    private Integer isLike;
 
     public Integer getCommentId() {
         return commentId;
@@ -23,11 +23,11 @@ public class CommentTrustList {
         this.userId = userId == null ? null : userId.trim();
     }
 
-    public Byte getIsTrust() {
-        return isTrust;
+    public Integer getIsLike() {
+        return isLike;
     }
 
-    public void setIsTrust(Byte isTrust) {
-        this.isTrust = isTrust;
+    public void setIsLike(Integer isLike) {
+        this.isLike = isLike;
     }
 }

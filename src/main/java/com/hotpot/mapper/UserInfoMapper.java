@@ -1,4 +1,4 @@
-package com.hotpot.dao;
+package com.hotpot.mapper;
 
 import com.hotpot.entity.UserInfo;
 

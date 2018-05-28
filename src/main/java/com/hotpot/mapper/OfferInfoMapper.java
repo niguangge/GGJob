@@ -1,15 +1,15 @@
-package com.hotpot.dao;
+package com.hotpot.mapper;
 
 import com.hotpot.entity.OfferInfo;
 
 public interface OfferInfoMapper {
-    int deleteByPrimaryKey(Integer offerId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(OfferInfo record);
 
     int insertSelective(OfferInfo record);
 
-    OfferInfo selectByPrimaryKey(Integer offerId);
+    OfferInfo selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(OfferInfo record);
 

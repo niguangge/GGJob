@@ -1,89 +1,136 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hotpot.dao.OfferInfoMapper" >
+<mapper namespace="com.hotpot.mapper.OfferInfoMapper" >
   <resultMap id="BaseResultMap" type="com.hotpot.entity.OfferInfo" >
-    <id column="offer_id" property="offerId" jdbcType="INTEGER" />
+    <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="creator_id" property="creatorId" jdbcType="VARCHAR" />
-    <result column="create_time" property="createTime" jdbcType="DATE" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="trust_number" property="trustNumber" jdbcType="INTEGER" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="salary_month" property="salaryMonth" jdbcType="VARCHAR" />
+    <result column="salary_year" property="salaryYear" jdbcType="VARCHAR" />
+    <result column="external_content" property="externalContent" jdbcType="VARCHAR" />
+    <result column="comment_number" property="commentNumber" jdbcType="INTEGER" />
+    <result column="trust" property="trust" jdbcType="INTEGER" />
     <result column="heat" property="heat" jdbcType="INTEGER" />
-    <result column="comments_number" property="commentsNumber" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    offer_id, title, creator_id, create_time, content, trust_number, heat, comments_number
+    id, title, category, company_name, education, salary_month, salary_year, external_content, 
+    comment_number, trust, heat, create_time, update_time, creator_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from offer_info
-    where offer_id = #{offerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from offer_info
-    where offer_id = #{offerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hotpot.entity.OfferInfo" >
-    insert into offer_info (offer_id, title, creator_id, 
-      create_time, content, trust_number, 
-      heat, comments_number)
-    values (#{offerId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{creatorId,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=DATE}, #{content,jdbcType=VARCHAR}, #{trustNumber,jdbcType=INTEGER}, 
-      #{heat,jdbcType=INTEGER}, #{commentsNumber,jdbcType=INTEGER})
+    insert into offer_info (id, title, category, 
+      company_name, education, salary_month, 
+      salary_year, external_content, comment_number, 
+      trust, heat, create_time, 
+      update_time, creator_id)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{salaryMonth,jdbcType=VARCHAR}, 
+      #{salaryYear,jdbcType=VARCHAR}, #{externalContent,jdbcType=VARCHAR}, #{commentNumber,jdbcType=INTEGER}, 
+      #{trust,jdbcType=INTEGER}, #{heat,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{creatorId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hotpot.entity.OfferInfo" >
     insert into offer_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="offerId != null" >
-        offer_id,
+      <if test="id != null" >
+        id,
       </if>
       <if test="title != null" >
         title,
       </if>
-      <if test="creatorId != null" >
-        creator_id,
+      <if test="category != null" >
+        category,
       </if>
-      <if test="createTime != null" >
-        create_time,
+      <if test="companyName != null" >
+        company_name,
       </if>
-      <if test="content != null" >
-        content,
+      <if test="education != null" >
+        education,
       </if>
-      <if test="trustNumber != null" >
-        trust_number,
+      <if test="salaryMonth != null" >
+        salary_month,
+      </if>
+      <if test="salaryYear != null" >
+        salary_year,
+      </if>
+      <if test="externalContent != null" >
+        external_content,
+      </if>
+      <if test="commentNumber != null" >
+        comment_number,
+      </if>
+      <if test="trust != null" >
+        trust,
       </if>
       <if test="heat != null" >
         heat,
       </if>
-      <if test="commentsNumber != null" >
-        comments_number,
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="creatorId != null" >
+        creator_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="offerId != null" >
-        #{offerId,jdbcType=INTEGER},
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="creatorId != null" >
-        #{creatorId,jdbcType=VARCHAR},
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=DATE},
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
+      <if test="education != null" >
+        #{education,jdbcType=VARCHAR},
       </if>
-      <if test="trustNumber != null" >
-        #{trustNumber,jdbcType=INTEGER},
+      <if test="salaryMonth != null" >
+        #{salaryMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryYear != null" >
+        #{salaryYear,jdbcType=VARCHAR},
+      </if>
+      <if test="externalContent != null" >
+        #{externalContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="trust != null" >
+        #{trust,jdbcType=INTEGER},
       </if>
       <if test="heat != null" >
         #{heat,jdbcType=INTEGER},
       </if>
-      <if test="commentsNumber != null" >
-        #{commentsNumber,jdbcType=INTEGER},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        #{creatorId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -93,36 +140,60 @@
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="creatorId != null" >
-        creator_id = #{creatorId,jdbcType=VARCHAR},
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=DATE},
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
+      <if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
       </if>
-      <if test="trustNumber != null" >
-        trust_number = #{trustNumber,jdbcType=INTEGER},
+      <if test="salaryMonth != null" >
+        salary_month = #{salaryMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryYear != null" >
+        salary_year = #{salaryYear,jdbcType=VARCHAR},
+      </if>
+      <if test="externalContent != null" >
+        external_content = #{externalContent,jdbcType=VARCHAR},
+      </if>
+      <if test="commentNumber != null" >
+        comment_number = #{commentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="trust != null" >
+        trust = #{trust,jdbcType=INTEGER},
       </if>
       <if test="heat != null" >
         heat = #{heat,jdbcType=INTEGER},
       </if>
-      <if test="commentsNumber != null" >
-        comments_number = #{commentsNumber,jdbcType=INTEGER},
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="creatorId != null" >
+        creator_id = #{creatorId,jdbcType=INTEGER},
       </if>
     </set>
-    where offer_id = #{offerId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hotpot.entity.OfferInfo" >
     update offer_info
     set title = #{title,jdbcType=VARCHAR},
-      creator_id = #{creatorId,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=DATE},
-      content = #{content,jdbcType=VARCHAR},
-      trust_number = #{trustNumber,jdbcType=INTEGER},
+      category = #{category,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      salary_month = #{salaryMonth,jdbcType=VARCHAR},
+      salary_year = #{salaryYear,jdbcType=VARCHAR},
+      external_content = #{externalContent,jdbcType=VARCHAR},
+      comment_number = #{commentNumber,jdbcType=INTEGER},
+      trust = #{trust,jdbcType=INTEGER},
       heat = #{heat,jdbcType=INTEGER},
-      comments_number = #{commentsNumber,jdbcType=INTEGER}
-    where offer_id = #{offerId,jdbcType=INTEGER}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      creator_id = #{creatorId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

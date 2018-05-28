@@ -2,10 +2,10 @@ package com.hotpot.entity;
 
 import java.util.Date;
 
-public class OfferComments {
-    private Integer offerId;
-
+public class CommentInfo {
     private Integer commentId;
+
+    private Integer offerId;
 
     private String commentorId;
 
@@ -15,20 +15,20 @@ public class OfferComments {
 
     private Integer likeNumber;
 
-    public Integer getOfferId() {
-        return offerId;
-    }
-
-    public void setOfferId(Integer offerId) {
-        this.offerId = offerId;
-    }
-
     public Integer getCommentId() {
         return commentId;
     }
 
     public void setCommentId(Integer commentId) {
         this.commentId = commentId;
+    }
+
+    public Integer getOfferId() {
+        return offerId;
+    }
+
+    public void setOfferId(Integer offerId) {
+        this.offerId = offerId;
     }
 
     public String getCommentorId() {

@@ -19,8 +19,9 @@ public class UserController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public void findAllUser(HttpServletRequest request) throws Exception {
+		String wxId = request.getParameter("wx_id");
 		String name = request.getParameter("name");
 		String ip = request.getParameter("ip");
-		userService.addUser(name, ip);
+		userService.addUser(wxId, name, ip);
 	}
 }

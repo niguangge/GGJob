@@ -5,6 +5,8 @@ import java.util.Date;
 public class UserInfo {
     private Integer userId;
 
+    private String wxId;
+
     private String userName;
 
     private String userIp;
@@ -19,6 +21,14 @@ public class UserInfo {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public String getWxId() {
+        return wxId;
+    }
+
+    public void setWxId(String wxId) {
+        this.wxId = wxId == null ? null : wxId.trim();
     }
 
     public String getUserName() {

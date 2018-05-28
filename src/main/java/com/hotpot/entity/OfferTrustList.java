@@ -5,7 +5,7 @@ public class OfferTrustList {
 
     private String userId;
 
-    private Byte isTrust;
+    private Integer isTrust;
 
     public Integer getOfferId() {
         return offerId;
@@ -23,11 +23,11 @@ public class OfferTrustList {
         this.userId = userId == null ? null : userId.trim();
     }
 
-    public Byte getIsTrust() {
+    public Integer getIsTrust() {
         return isTrust;
     }
 
-    public void setIsTrust(Byte isTrust) {
+    public void setIsTrust(Integer isTrust) {
         this.isTrust = isTrust;
     }
 }

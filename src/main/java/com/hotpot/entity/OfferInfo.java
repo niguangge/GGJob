@@ -3,28 +3,40 @@ package com.hotpot.entity;
 import java.util.Date;
 
 public class OfferInfo {
-    private Integer offerId;
+    private Integer id;
 
     private String title;
 
-    private String creatorId;
+    private String category;
 
-    private Date createTime;
+    private String companyName;
 
-    private String content;
+    private String education;
 
-    private Integer trustNumber;
+    private String salaryMonth;
+
+    private String salaryYear;
+
+    private String externalContent;
+
+    private Integer commentNumber;
+
+    private Integer trust;
 
     private Integer heat;
 
-    private Integer commentsNumber;
+    private Date createTime;
 
-    public Integer getOfferId() {
-        return offerId;
+    private Date updateTime;
+
+    private Integer creatorId;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setOfferId(Integer offerId) {
-        this.offerId = offerId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -35,36 +47,68 @@ public class OfferInfo {
         this.title = title == null ? null : title.trim();
     }
 
-    public String getCreatorId() {
-        return creatorId;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCreatorId(String creatorId) {
-        this.creatorId = creatorId == null ? null : creatorId.trim();
+    public void setCategory(String category) {
+        this.category = category == null ? null : category.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName == null ? null : companyName.trim();
     }
 
-    public String getContent() {
-        return content;
+    public String getEducation() {
+        return education;
     }
 
-    public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+    public void setEducation(String education) {
+        this.education = education == null ? null : education.trim();
     }
 
-    public Integer getTrustNumber() {
-        return trustNumber;
+    public String getSalaryMonth() {
+        return salaryMonth;
     }
 
-    public void setTrustNumber(Integer trustNumber) {
-        this.trustNumber = trustNumber;
+    public void setSalaryMonth(String salaryMonth) {
+        this.salaryMonth = salaryMonth == null ? null : salaryMonth.trim();
+    }
+
+    public String getSalaryYear() {
+        return salaryYear;
+    }
+
+    public void setSalaryYear(String salaryYear) {
+        this.salaryYear = salaryYear == null ? null : salaryYear.trim();
+    }
+
+    public String getExternalContent() {
+        return externalContent;
+    }
+
+    public void setExternalContent(String externalContent) {
+        this.externalContent = externalContent == null ? null : externalContent.trim();
+    }
+
+    public Integer getCommentNumber() {
+        return commentNumber;
+    }
+
+    public void setCommentNumber(Integer commentNumber) {
+        this.commentNumber = commentNumber;
+    }
+
+    public Integer getTrust() {
+        return trust;
+    }
+
+    public void setTrust(Integer trust) {
+        this.trust = trust;
     }
 
     public Integer getHeat() {
@@ -75,11 +119,27 @@ public class OfferInfo {
         this.heat = heat;
     }
 
-    public Integer getCommentsNumber() {
-        return commentsNumber;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCommentsNumber(Integer commentsNumber) {
-        this.commentsNumber = commentsNumber;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Integer getCreatorId() {
+        return creatorId;
+    }
+
+    public void setCreatorId(Integer creatorId) {
+        this.creatorId = creatorId;
     }
 }

@@ -25,8 +25,8 @@
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 		<!--生成映射文件存放位置 -->
-		<sqlMapGenerator targetPackage="com.hotpot.mapper"
-			targetProject="src/main/java">
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 		<!--生成Dao类存放位置 -->
@@ -34,7 +34,7 @@
 			和基于注解的Mapper对象 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象 type="XMLMAPPER",生成SQLMap 
 			XML文件和独立的Mapper接口 -->
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.hotpot.dao" targetProject="src/main/java">
+			targetPackage="com.hotpot.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 		<!--生成对应表及类名 -->
@@ -46,15 +46,15 @@
 			enableCountByExample="false" enableUpdateByExample="false"
 			enableDeleteByExample="false" enableSelectByExample="false"
 			selectByExampleQueryId="false"></table>
-		<table tableName="offer_comments"
-			domainObjectName="OfferComments" enableCountByExample="false"
+		<table tableName="comment_info"
+			domainObjectName="CommentInfo" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"></table>
 		<table tableName="offer_trust_list"
 			domainObjectName="OfferTrustList" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"></table>
-		<table tableName="comment_trust_list"
+		<table tableName="comment_like_list"
 			domainObjectName="CommentTrustList" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"></table>

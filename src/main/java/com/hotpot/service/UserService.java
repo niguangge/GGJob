@@ -1,11 +1,9 @@
 package com.hotpot.service;
 
-import java.util.List;
-
 import com.hotpot.entity.UserInfo;
 
 public interface UserService {
-    void addUser(String name ,String ip) throws Exception;
+    void addUser(String wxId, String name, String ip) throws Exception;
 
     UserInfo queryUserByName(String name) throws Exception;
     
@@ -13,4 +11,5 @@ public interface UserService {
     
     UserInfo queryUserByid(Integer id) throws Exception;
     
+    UserInfo queryUserByWxId(Integer wxId) throws Exception;
 }

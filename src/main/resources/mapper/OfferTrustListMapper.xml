@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hotpot.dao.OfferTrustListMapper" >
+<mapper namespace="com.hotpot.mapper.OfferTrustListMapper" >
   <resultMap id="BaseResultMap" type="com.hotpot.entity.OfferTrustList" >
     <id column="offer_id" property="offerId" jdbcType="INTEGER" />
     <id column="user_id" property="userId" jdbcType="VARCHAR" />
-    <result column="is_trust" property="isTrust" jdbcType="TINYINT" />
+    <result column="is_trust" property="isTrust" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     offer_id, user_id, is_trust
@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.hotpot.entity.OfferTrustList" >
     insert into offer_trust_list (offer_id, user_id, is_trust
       )
-    values (#{offerId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{isTrust,jdbcType=TINYINT}
+    values (#{offerId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{isTrust,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hotpot.entity.OfferTrustList" >
@@ -48,7 +48,7 @@
         #{userId,jdbcType=VARCHAR},
       </if>
       <if test="isTrust != null" >
-        #{isTrust,jdbcType=TINYINT},
+        #{isTrust,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -56,7 +56,7 @@
     update offer_trust_list
     <set >
       <if test="isTrust != null" >
-        is_trust = #{isTrust,jdbcType=TINYINT},
+        is_trust = #{isTrust,jdbcType=INTEGER},
       </if>
     </set>
     where offer_id = #{offerId,jdbcType=INTEGER}
@@ -64,7 +64,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hotpot.entity.OfferTrustList" >
     update offer_trust_list
-    set is_trust = #{isTrust,jdbcType=TINYINT}
+    set is_trust = #{isTrust,jdbcType=INTEGER}
     where offer_id = #{offerId,jdbcType=INTEGER}
       and user_id = #{userId,jdbcType=VARCHAR}
   </update>

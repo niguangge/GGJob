@@ -7,7 +7,7 @@ public class CommentInfo {
 
     private Integer offerId;
 
-    private String commentorId;
+    private Integer commentorId;
 
     private Date commentTime;
 
@@ -31,12 +31,12 @@ public class CommentInfo {
         this.offerId = offerId;
     }
 
-    public String getCommentorId() {
+    public Integer getCommentorId() {
         return commentorId;
     }
 
-    public void setCommentorId(String commentorId) {
-        this.commentorId = commentorId == null ? null : commentorId.trim();
+    public void setCommentorId(Integer commentorId) {
+        this.commentorId = commentorId;
     }
 
     public Date getCommentTime() {

@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.hotpot.entity.CommentInfo" >
     <id column="comment_id" property="commentId" jdbcType="INTEGER" />
     <result column="offer_id" property="offerId" jdbcType="INTEGER" />
-    <result column="commentor_id" property="commentorId" jdbcType="VARCHAR" />
+    <result column="commentor_id" property="commentorId" jdbcType="INTEGER" />
     <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
     <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
     <result column="like_number" property="likeNumber" jdbcType="INTEGER" />
@@ -26,7 +26,7 @@
     insert into comment_info (comment_id, offer_id, commentor_id, 
       comment_time, comment_content, like_number
       )
-    values (#{commentId,jdbcType=INTEGER}, #{offerId,jdbcType=INTEGER}, #{commentorId,jdbcType=VARCHAR}, 
+    values (#{commentId,jdbcType=INTEGER}, #{offerId,jdbcType=INTEGER}, #{commentorId,jdbcType=INTEGER}, 
       #{commentTime,jdbcType=TIMESTAMP}, #{commentContent,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER}
       )
   </insert>
@@ -60,7 +60,7 @@
         #{offerId,jdbcType=INTEGER},
       </if>
       <if test="commentorId != null" >
-        #{commentorId,jdbcType=VARCHAR},
+        #{commentorId,jdbcType=INTEGER},
       </if>
       <if test="commentTime != null" >
         #{commentTime,jdbcType=TIMESTAMP},
@@ -80,7 +80,7 @@
         offer_id = #{offerId,jdbcType=INTEGER},
       </if>
       <if test="commentorId != null" >
-        commentor_id = #{commentorId,jdbcType=VARCHAR},
+        commentor_id = #{commentorId,jdbcType=INTEGER},
       </if>
       <if test="commentTime != null" >
         comment_time = #{commentTime,jdbcType=TIMESTAMP},
@@ -97,7 +97,7 @@
   <update id="updateByPrimaryKey" parameterType="com.hotpot.entity.CommentInfo" >
     update comment_info
     set offer_id = #{offerId,jdbcType=INTEGER},
-      commentor_id = #{commentorId,jdbcType=VARCHAR},
+      commentor_id = #{commentorId,jdbcType=INTEGER},
       comment_time = #{commentTime,jdbcType=TIMESTAMP},
       comment_content = #{commentContent,jdbcType=VARCHAR},
       like_number = #{likeNumber,jdbcType=INTEGER}

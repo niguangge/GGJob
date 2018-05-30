@@ -36,12 +36,36 @@ public class OfferController {
 	@RequestMapping(value = "/select/date", method = RequestMethod.GET)
 	public List<OfferInfo> selectUserByDate(HttpServletRequest request) throws Exception {
 		String limitStr = request.getParameter("limit");
+		String offsetStr = request.getParameter("offset");
 		int limit = 10;
+		int offset = 0;
 		if (limitStr != null) {
 			limit = Integer.parseInt(limitStr);
 		}
-		System.out.println(offerService.selectOfferOrderByDate(limit).get(0).getTitle());
-		return offerService.selectOfferOrderByDate(limit);
+		if (offsetStr != null) {
+			offset = Integer.parseInt(offsetStr);
+		}
+		return offerService.selectOfferOrderByDate(limit,offset);
+	}
+	
+	@RequestMapping(value = "/select/heat", method = RequestMethod.GET)
+	public List<OfferInfo> selectUserByHeat(HttpServletRequest request) throws Exception {
+		String limitStr = request.getParameter("limit");
+		String offsetStr = request.getParameter("offset");
+		int limit = 10;
+		int offset = 0;
+		if (limitStr != null) {
+			limit = Integer.parseInt(limitStr);
+		}
+		if (offsetStr != null) {
+			offset = Integer.parseInt(offsetStr);
+		}
+		return offerService.selectOfferOrderByHeat(limit,offset);
+	}
+	
+	@RequestMapping(value = "/select/count", method = RequestMethod.GET)
+	public int getCount(HttpServletRequest request) throws Exception {
+		return offerService.getCount();
 	}
 
 }

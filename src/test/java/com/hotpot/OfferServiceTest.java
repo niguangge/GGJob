@@ -22,6 +22,7 @@ public class OfferServiceTest {
 
 	public void testSelectOfferOrderByDate() throws Exception {
 		int limit = 20;
-		offerService.selectOfferOrderByDate(limit);
+		int offset = 0;
+		offerService.selectOfferOrderByDate(limit,offset);
 	}
 }

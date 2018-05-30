@@ -196,11 +196,23 @@
       creator_id = #{creatorId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="selectOfferOrderByDate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectOfferOrderByDate" resultMap="BaseResultMap" parameterType="map" >
     select 
     <include refid="Base_Column_List" />
     from offer_info
-    order by create_time
-    limit #{limit,jdbcType=INTEGER}
+    order by create_time desc
+    limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+  </select>
+  <select id="selectOfferOrderByHeat" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from offer_info
+    order by heat desc
+    limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
+  </select>
+  <select id="getCount" resultType="java.lang.Integer" >
+    select 
+    count(*)
+    from offer_info
   </select>
 </mapper>

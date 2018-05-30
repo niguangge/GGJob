@@ -8,5 +8,9 @@ public interface OfferService {
 	void addOfferInfo(String title, String category, String companyName, String education, String salaryMonth,
 			String salaryYear, String content, int creatorId) throws Exception;
 
-	List<OfferInfo> selectOfferOrderByDate(int limit) throws Exception;
+	List<OfferInfo> selectOfferOrderByDate(int limit, int offset) throws Exception;
+	
+	List<OfferInfo> selectOfferOrderByHeat(int limit, int offset) throws Exception;
+	
+	int getCount() throws Exception;
 }

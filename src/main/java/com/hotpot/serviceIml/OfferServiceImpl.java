@@ -37,9 +37,21 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
-	public List<OfferInfo> selectOfferOrderByDate(int limit) throws Exception {
+	public List<OfferInfo> selectOfferOrderByDate(int limit, int offset) throws Exception {
 		// TODO Auto-generated method stub
-		return mapper.selectOfferOrderByDate(limit);
+		return mapper.selectOfferOrderByDate(limit, offset);
+	}
+	
+	@Override
+	public List<OfferInfo> selectOfferOrderByHeat(int limit, int offset) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.selectOfferOrderByHeat(limit, offset);
+	}
+	
+	@Override
+	public int getCount() throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.getCount();
 	}
 
 }

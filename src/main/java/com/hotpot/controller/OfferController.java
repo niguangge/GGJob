@@ -1,5 +1,6 @@
 package com.hotpot.controller;
 
+import java.util.List;
 
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hotpot.entity.OfferInfo;
 import com.hotpot.service.OfferService;
 
 @RestController
@@ -19,7 +21,7 @@ public class OfferController {
 	private OfferService offerService;
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public void findAllUser(HttpServletRequest request) throws Exception {
+	public void addUser(HttpServletRequest request) throws Exception {
 		String title = request.getParameter("title");
 		int creatorId = Integer.parseInt(request.getParameter("user_id"));
 		String content = request.getParameter("content");
@@ -30,4 +32,16 @@ public class OfferController {
 		String salaryYear = request.getParameter("salary_year");
 		offerService.addOfferInfo(title, category, companyName, eduation, salaryMonth, salaryYear, content, creatorId);
 	}
+
+	@RequestMapping(value = "/select/date", method = RequestMethod.GET)
+	public List<OfferInfo> selectUserByDate(HttpServletRequest request) throws Exception {
+		String limitStr = request.getParameter("limit");
+		int limit = 10;
+		if (limitStr != null) {
+			limit = Integer.parseInt(limitStr);
+		}
+		System.out.println(offerService.selectOfferOrderByDate(limit).get(0).getTitle());
+		return offerService.selectOfferOrderByDate(limit);
+	}
+
 }

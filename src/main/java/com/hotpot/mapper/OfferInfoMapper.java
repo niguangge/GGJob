@@ -1,5 +1,7 @@
 package com.hotpot.mapper;
 
+import java.util.List;
+
 import com.hotpot.entity.OfferInfo;
 
 public interface OfferInfoMapper {
@@ -14,4 +16,6 @@ public interface OfferInfoMapper {
     int updateByPrimaryKeySelective(OfferInfo record);
 
     int updateByPrimaryKey(OfferInfo record);
+    
+    List<OfferInfo> selectOfferOrderByDate(int limit);
 }

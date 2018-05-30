@@ -1,6 +1,7 @@
 package com.hotpot.serviceIml;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,9 +37,9 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
-	public void selectOfferOrderByDate(int limit) throws Exception {
+	public List<OfferInfo> selectOfferOrderByDate(int limit) throws Exception {
 		// TODO Auto-generated method stub
-
+		return mapper.selectOfferOrderByDate(limit);
 	}
 
 }

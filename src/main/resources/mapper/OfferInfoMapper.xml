@@ -196,4 +196,11 @@
       creator_id = #{creatorId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectOfferOrderByDate" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from offer_info
+    order by create_time
+    limit #{limit,jdbcType=INTEGER}
+  </select>
 </mapper>

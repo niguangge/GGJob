@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotpot.mapper.CommentInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.hotpot.entity.CommentInfo" >
+    <id column="comment_id" property="commentId" jdbcType="INTEGER" />
+    <result column="offer_id" property="offerId" jdbcType="INTEGER" />
+    <result column="commentor_id" property="commentorId" jdbcType="INTEGER" />
+    <result column="comment_time" property="commentTime" jdbcType="TIMESTAMP" />
+    <result column="comment_content" property="commentContent" jdbcType="VARCHAR" />
+    <result column="like_number" property="likeNumber" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comment_id, offer_id, commentor_id, comment_time, comment_content, like_number
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from comment_info
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from comment_info
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hotpot.entity.CommentInfo" >
+    insert into comment_info (comment_id, offer_id, commentor_id, 
+      comment_time, comment_content, like_number
+      )
+    values (#{commentId,jdbcType=INTEGER}, #{offerId,jdbcType=INTEGER}, #{commentorId,jdbcType=INTEGER}, 
+      #{commentTime,jdbcType=TIMESTAMP}, #{commentContent,jdbcType=VARCHAR}, #{likeNumber,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotpot.entity.CommentInfo" >
+    insert into comment_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        comment_id,
+      </if>
+      <if test="offerId != null" >
+        offer_id,
+      </if>
+      <if test="commentorId != null" >
+        commentor_id,
+      </if>
+      <if test="commentTime != null" >
+        comment_time,
+      </if>
+      <if test="commentContent != null" >
+        comment_content,
+      </if>
+      <if test="likeNumber != null" >
+        like_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commentId != null" >
+        #{commentId,jdbcType=INTEGER},
+      </if>
+      <if test="offerId != null" >
+        #{offerId,jdbcType=INTEGER},
+      </if>
+      <if test="commentorId != null" >
+        #{commentorId,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null" >
+        #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNumber != null" >
+        #{likeNumber,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotpot.entity.CommentInfo" >
+    update comment_info
+    <set >
+      <if test="offerId != null" >
+        offer_id = #{offerId,jdbcType=INTEGER},
+      </if>
+      <if test="commentorId != null" >
+        commentor_id = #{commentorId,jdbcType=INTEGER},
+      </if>
+      <if test="commentTime != null" >
+        comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="commentContent != null" >
+        comment_content = #{commentContent,jdbcType=VARCHAR},
+      </if>
+      <if test="likeNumber != null" >
+        like_number = #{likeNumber,jdbcType=INTEGER},
+      </if>
+    </set>
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotpot.entity.CommentInfo" >
+    update comment_info
+    set offer_id = #{offerId,jdbcType=INTEGER},
+      commentor_id = #{commentorId,jdbcType=INTEGER},
+      comment_time = #{commentTime,jdbcType=TIMESTAMP},
+      comment_content = #{commentContent,jdbcType=VARCHAR},
+      like_number = #{likeNumber,jdbcType=INTEGER}
+    where comment_id = #{commentId,jdbcType=INTEGER}
+  </update>
+</mapper>

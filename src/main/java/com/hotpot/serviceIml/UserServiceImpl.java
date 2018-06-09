@@ -1,28 +1,48 @@
 package com.hotpot.serviceIml;
 
-import java.util.List;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hotpot.entity.User;
-import com.hotpot.mapper.IUserMapper;
-import com.hotpot.service.IUserService;
+import com.hotpot.entity.UserInfo;
+import com.hotpot.mapper.UserInfoMapper;
+import com.hotpot.service.UserService;
 
 @Service
-public class UserServiceImpl implements IUserService{
+public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private IUserMapper mapper;
+	@Autowired
+	private UserInfoMapper mapper;
 
-    @Override
-    public List<User> queryAllUser() throws Exception {
-        return mapper.queryAllUser();
-    }
+	public void addUser(String wxId, String name, String ip) throws Exception {
+		UserInfo record = new UserInfo();
+		record.setWxId(wxId);
+		record.setUserName(name);
+		record.setUserIp(ip);
+		Date currentTime = new Date();
+		record.setLatestLoginTime(currentTime);
+		record.setRegistrationTime(currentTime);
+		mapper.insertSelective(record);
+	}
 
-    @Override
-    public void deleteUser(Integer id) throws Exception {
-        mapper.deleteUser(id);
-    }
+	public UserInfo queryUserByName(String name) throws Exception {
+		return null;
+
+	}
+
+	public UserInfo queryUserByip(String ip) throws Exception {
+		return null;
+
+	}
+
+	public UserInfo queryUserByid(Integer id) throws Exception {
+		return null;
+
+	}
+	
+	public UserInfo queryUserByWxId(Integer wxId) throws Exception{
+		return null;
+	}
 
 }

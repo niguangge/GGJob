@@ -26,12 +26,16 @@ public class OfferServiceImpl implements OfferService {
 		int commentsNumber = 0;
 		info.setTitle(title);
 		info.setCategory(category);
+		info.setCompanyName(companyName);
+		info.setEducation(eduation);
 		info.setCreatorId(creatorId);
 		info.setCreateTime(createTime);
 		info.setExternalContent(content);
 		info.setCreateTime(createTime);
 		info.setTrust(trust);
 		info.setHeat(heat);
+		info.setSalaryMonth(salaryMonth);
+		info.setSalaryYear(salaryYear);
 		info.setCommentNumber(commentsNumber);
 		mapper.insertSelective(info);
 	}
@@ -49,9 +53,21 @@ public class OfferServiceImpl implements OfferService {
 	}
 	
 	@Override
+	public OfferInfo selectOfferById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return mapper.selectOfferById(id);
+	}
+	
+	@Override
 	public int getCount() throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.getCount();
+	}
+	
+	@Override
+	public void addHeat(int heat,int id) throws Exception {
+		// TODO Auto-generated method stub
+		 mapper.addHeat(heat , id);
 	}
 
 }

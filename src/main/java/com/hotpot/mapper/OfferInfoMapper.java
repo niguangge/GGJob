@@ -22,6 +22,10 @@ public interface OfferInfoMapper {
     List<OfferInfo> selectOfferOrderByDate(@Param("limit") int limit,@Param("offset") int offset);
     
     List<OfferInfo> selectOfferOrderByHeat(@Param("limit") int limit,@Param("offset") int offset);
+  
+    OfferInfo selectOfferById(@Param("id") int id);
     
     int getCount();
+    
+    void addHeat(@Param("heat") int heat,@Param("id") int id);
 }

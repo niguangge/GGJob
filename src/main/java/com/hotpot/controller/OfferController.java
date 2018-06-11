@@ -67,5 +67,26 @@ public class OfferController {
 	public int getCount(HttpServletRequest request) throws Exception {
 		return offerService.getCount();
 	}
+	
+	@RequestMapping(value = "/select/id", method = RequestMethod.GET)
+	public OfferInfo selectUserById(HttpServletRequest request) throws Exception {
+		int id = Integer.parseInt(request.getParameter("id"));
+	/*	if (id == null) {
+			limit = Integer.parseInt(limitStr);
+		}
+		*/
+
+		System.out.println("gaifaiID");
+		return offerService.selectOfferById(id);
+	}
+	
+	@RequestMapping(value = "/add/heat", method = RequestMethod.GET)
+	public void addHeatById(HttpServletRequest request) throws Exception {
+		int id = Integer.parseInt(request.getParameter("id"));
+		OfferInfo info = offerService.selectOfferById(id);
+		int heat = info.getHeat();
+		heat++;
+		offerService.addHeat(heat,id);
+	}
 
 }

@@ -210,9 +210,20 @@
     order by heat desc
     limit #{offset,jdbcType=INTEGER},#{limit,jdbcType=INTEGER}
   </select>
+  <select id="selectOfferById" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from offer_info
+    where id=#{id,jdbcType=INTEGER}
+  </select>
   <select id="getCount" resultType="java.lang.Integer" >
     select 
     count(*)
     from offer_info
   </select>
+   <update id="addHeat" parameterType="map" >
+    update offer_info set 
+    heat = #{heat,jdbcType=INTEGER}
+    where id=#{id,jdbcType=INTEGER}
+  </update>
 </mapper>

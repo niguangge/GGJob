@@ -131,3 +131,12 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` EVENT `insertIntoOfferInfo` ON SCHEDULE AT '2018-05-30 23:27:15' ON COMPLETION NOT PRESERVE ENABLE DO INSERT INTO `ggjob`.`offer_info` (`id`, `title`, `category`, `company_name`, `education`, `salary_month`, `salary_year`, `external_content`, `comment_number`, `trust`, `heat`, `create_time`, `update_time`, `creator_id`) VALUES ('2', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '2018-05-30 23:27:02', '2018-05-30 23:27:07', '0')
 ;;
 DELIMITER ;
+=======
+  `user_id` varchar(100) NOT NULL,
+  `user_name` varchar(100) DEFAULT NULL,
+  `user_ip` varchar(255) DEFAULT NULL,
+  `registration_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `latest_login_time` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+>>>>>>> master

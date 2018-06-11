@@ -60,7 +60,6 @@ public class OfferController {
 		if (offsetStr != null) {
 			offset = Integer.parseInt(offsetStr);
 		}
-		System.out.println("gaifai");
 		return offerService.selectOfferOrderByHeat(limit,offset);
 	}
 	

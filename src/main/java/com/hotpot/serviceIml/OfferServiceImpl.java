@@ -27,9 +27,7 @@ public class OfferServiceImpl implements OfferService {
 		info.setTitle(title);
 		info.setCategory(category);
 		info.setCompanyName(companyName);
-		System.out.println(info.getCompanyName());
 		info.setEducation(eduation);
-		System.out.println(eduation);
 		info.setCreatorId(creatorId);
 		info.setCreateTime(createTime);
 		info.setExternalContent(content);

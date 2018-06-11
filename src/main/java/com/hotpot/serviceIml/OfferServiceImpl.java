@@ -16,7 +16,6 @@ public class OfferServiceImpl implements OfferService {
 	@Autowired
 	private OfferInfoMapper mapper;
 
-	@Override
 	public void addOfferInfo(String title, String category, String companyName, String eduation, String salaryMonth,
 			String salaryYear, String content, int creatorId) throws Exception {
 		OfferInfo info = new OfferInfo();
@@ -40,18 +39,16 @@ public class OfferServiceImpl implements OfferService {
 		mapper.insertSelective(info);
 	}
 
-	@Override
 	public List<OfferInfo> selectOfferOrderByDate(int limit, int offset) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.selectOfferOrderByDate(limit, offset);
 	}
 	
-	@Override
 	public List<OfferInfo> selectOfferOrderByHeat(int limit, int offset) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.selectOfferOrderByHeat(limit, offset);
 	}
-	
+
 	@Override
 	public OfferInfo selectOfferById(int id) throws Exception {
 		// TODO Auto-generated method stub

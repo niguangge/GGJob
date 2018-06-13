@@ -11,6 +11,10 @@ public class OfferInfo {
 
     private String companyName;
 
+    private String city;
+
+    private String position;
+
     private String education;
 
     private String salaryMonth;
@@ -61,6 +65,22 @@ public class OfferInfo {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName == null ? null : companyName.trim();
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position == null ? null : position.trim();
     }
 
     public String getEducation() {

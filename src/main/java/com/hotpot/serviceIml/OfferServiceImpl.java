@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hotpot.entity.OfferInfo;
+import com.hotpot.entity.UserCollect;
 import com.hotpot.mapper.OfferInfoMapper;
+import com.hotpot.mapper.UserCollectMapper;
 import com.hotpot.service.OfferService;
 
 @Service
@@ -15,6 +17,9 @@ public class OfferServiceImpl implements OfferService {
 
 	@Autowired
 	private OfferInfoMapper mapper;
+
+	@Autowired
+	private UserCollectMapper collectMapper;
 
 	public void addOfferInfo(String title, String category, String companyName, String eduation, String salaryMonth,
 			String salaryYear, String content, int creatorId) throws Exception {
@@ -43,7 +48,7 @@ public class OfferServiceImpl implements OfferService {
 		// TODO Auto-generated method stub
 		return mapper.selectOfferOrderByDate(limit, offset);
 	}
-	
+
 	public List<OfferInfo> selectOfferOrderByHeat(int limit, int offset) throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.selectOfferOrderByHeat(limit, offset);
@@ -54,17 +59,26 @@ public class OfferServiceImpl implements OfferService {
 		// TODO Auto-generated method stub
 		return mapper.selectOfferById(id);
 	}
-	
+
 	@Override
 	public int getCount() throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.getCount();
 	}
-	
+
 	@Override
-	public void addHeat(int heat,int id) throws Exception {
+	public void addHeat(int heat, int id) throws Exception {
 		// TODO Auto-generated method stub
-		 mapper.addHeat(heat , id);
+		mapper.addHeat(heat, id);
 	}
 
+	@Override
+	public List<UserCollect> selectCollectByUserId(int userId, int limit) throws Exception {
+		return collectMapper.selectByUserId(userId, limit);
+	}
+
+	@Override
+	public void addCollect(UserCollect userCollect) throws Exception {
+		collectMapper.insert(userCollect);
+	}
 }

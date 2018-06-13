@@ -58,5 +58,9 @@
 			domainObjectName="CommentTrustList" enableCountByExample="false"
 			enableUpdateByExample="false" enableDeleteByExample="false"
 			enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="user_collect"
+			domainObjectName="UserCollect" enableCountByExample="false"
+			enableUpdateByExample="false" enableDeleteByExample="false"
+			enableSelectByExample="false" selectByExampleQueryId="false"></table>
 	</context>
 </generatorConfiguration>

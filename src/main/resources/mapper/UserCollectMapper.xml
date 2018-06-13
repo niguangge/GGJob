@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotpot.mapper.UserCollectMapper" >
+  <resultMap id="BaseResultMap" type="com.hotpot.entity.UserCollect" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <id column="offer_id" property="offerId" jdbcType="INTEGER" />
+    <result column="collect_time" property="collectTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, offer_id, collect_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_collect
+    where user_id = #{userId,jdbcType=INTEGER}
+      and offer_id = #{offerId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_collect
+    where user_id = #{userId,jdbcType=INTEGER}
+    order by collect_time desc
+    limit #{limit,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map" >
+    delete from user_collect
+    where user_id = #{userId,jdbcType=INTEGER}
+      and offer_id = #{offerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hotpot.entity.UserCollect" >
+    insert into user_collect (user_id, offer_id, collect_time
+      )
+    values (#{userId,jdbcType=INTEGER}, #{offerId,jdbcType=INTEGER}, #{collectTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hotpot.entity.UserCollect" >
+    insert into user_collect
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="offerId != null" >
+        offer_id,
+      </if>
+      <if test="collectTime != null" >
+        collect_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="offerId != null" >
+        #{offerId,jdbcType=INTEGER},
+      </if>
+      <if test="collectTime != null" >
+        #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hotpot.entity.UserCollect" >
+    update user_collect
+    <set >
+      <if test="collectTime != null" >
+        collect_time = #{collectTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+      and offer_id = #{offerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hotpot.entity.UserCollect" >
+    update user_collect
+    set collect_time = #{collectTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=INTEGER}
+      and offer_id = #{offerId,jdbcType=INTEGER}
+  </update>
+</mapper>

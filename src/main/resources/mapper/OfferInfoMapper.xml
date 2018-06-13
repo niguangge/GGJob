@@ -6,6 +6,8 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="category" property="category" jdbcType="VARCHAR" />
     <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
     <result column="education" property="education" jdbcType="VARCHAR" />
     <result column="salary_month" property="salaryMonth" jdbcType="VARCHAR" />
     <result column="salary_year" property="salaryYear" jdbcType="VARCHAR" />
@@ -18,8 +20,8 @@
     <result column="creator_id" property="creatorId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, title, category, company_name, education, salary_month, salary_year, external_content, 
-    comment_number, trust, heat, create_time, update_time, creator_id
+    id, title, category, company_name, city, position, education, salary_month, salary_year, 
+    external_content, comment_number, trust, heat, create_time, update_time, creator_id
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -33,15 +35,17 @@
   </delete>
   <insert id="insert" parameterType="com.hotpot.entity.OfferInfo" >
     insert into offer_info (id, title, category, 
-      company_name, education, salary_month, 
-      salary_year, external_content, comment_number, 
-      trust, heat, create_time, 
-      update_time, creator_id)
+      company_name, city, position, 
+      education, salary_month, salary_year, 
+      external_content, comment_number, trust, 
+      heat, create_time, update_time, 
+      creator_id)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
-      #{companyName,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{salaryMonth,jdbcType=VARCHAR}, 
-      #{salaryYear,jdbcType=VARCHAR}, #{externalContent,jdbcType=VARCHAR}, #{commentNumber,jdbcType=INTEGER}, 
-      #{trust,jdbcType=INTEGER}, #{heat,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{creatorId,jdbcType=INTEGER})
+      #{companyName,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, 
+      #{education,jdbcType=VARCHAR}, #{salaryMonth,jdbcType=VARCHAR}, #{salaryYear,jdbcType=VARCHAR}, 
+      #{externalContent,jdbcType=VARCHAR}, #{commentNumber,jdbcType=INTEGER}, #{trust,jdbcType=INTEGER}, 
+      #{heat,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{creatorId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.hotpot.entity.OfferInfo" >
     insert into offer_info
@@ -57,6 +61,12 @@
       </if>
       <if test="companyName != null" >
         company_name,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="position != null" >
+        position,
       </if>
       <if test="education != null" >
         education,
@@ -102,6 +112,12 @@
       <if test="companyName != null" >
         #{companyName,jdbcType=VARCHAR},
       </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        #{position,jdbcType=VARCHAR},
+      </if>
       <if test="education != null" >
         #{education,jdbcType=VARCHAR},
       </if>
@@ -146,6 +162,12 @@
       <if test="companyName != null" >
         company_name = #{companyName,jdbcType=VARCHAR},
       </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if>
       <if test="education != null" >
         education = #{education,jdbcType=VARCHAR},
       </if>
@@ -184,6 +206,8 @@
     set title = #{title,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
       company_name = #{companyName,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
       education = #{education,jdbcType=VARCHAR},
       salary_month = #{salaryMonth,jdbcType=VARCHAR},
       salary_year = #{salaryYear,jdbcType=VARCHAR},

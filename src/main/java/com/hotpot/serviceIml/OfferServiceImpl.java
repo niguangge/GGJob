@@ -21,8 +21,8 @@ public class OfferServiceImpl implements OfferService {
 	@Autowired
 	private UserCollectMapper collectMapper;
 
-	public void addOfferInfo(String title, String category, String companyName, String eduation, String salaryMonth,
-			String salaryYear, String content, int creatorId) throws Exception {
+	public void addOfferInfo(String title, String category, String companyName, String city, String position,
+			String eduation, String salaryMonth, String salaryYear, String content, int creatorId) throws Exception {
 		OfferInfo info = new OfferInfo();
 		Date createTime = new Date();
 		int trust = 3;
@@ -31,6 +31,8 @@ public class OfferServiceImpl implements OfferService {
 		info.setTitle(title);
 		info.setCategory(category);
 		info.setCompanyName(companyName);
+		info.setCity(city);
+		info.setPosition(position);
 		info.setEducation(eduation);
 		info.setCreatorId(creatorId);
 		info.setCreateTime(createTime);

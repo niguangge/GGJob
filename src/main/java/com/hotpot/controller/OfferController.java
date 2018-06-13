@@ -29,10 +29,13 @@ public class OfferController {
 		String content = request.getParameter("content");
 		String category = request.getParameter("category");
 		String companyName = request.getParameter("company_name");
+		String city = request.getParameter("city");
+		String position = request.getParameter("position");
 		String eduation = request.getParameter("eduation");
 		String salaryMonth = request.getParameter("salary_month");
 		String salaryYear = request.getParameter("salary_year");
-		offerService.addOfferInfo(title, category, companyName, eduation, salaryMonth, salaryYear, content, creatorId);
+		offerService.addOfferInfo(title, category, companyName, city, position, eduation, salaryMonth, salaryYear,
+				content, creatorId);
 	}
 
 	@RequestMapping(value = "/select/date", method = RequestMethod.GET)

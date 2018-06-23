@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -82,6 +83,59 @@ public class OfferController {
 
 		System.out.println("gaifaiID");
 		return offerService.selectOfferById(id);
+	}
+
+	@RequestMapping(value = "/search/{index}", method = RequestMethod.GET)
+	public List<OfferInfo> searchByIndex(@PathVariable("index") String index, HttpServletRequest request)
+			throws Exception {
+		String value = request.getParameter("value");
+		String limitStr = request.getParameter("limit");
+		String offsetStr = request.getParameter("offset");
+		int limit = 10;
+		int offset = 0;
+		if (limitStr != null) {
+			limit = Integer.parseInt(limitStr);
+		}
+		if (offsetStr != null) {
+			offset = Integer.parseInt(offsetStr);
+		}
+		return offerService.selectOfferByIndex(index, value, limit, offset);
+	}
+	
+	@RequestMapping(value = "/multiSearch", method = RequestMethod.GET)
+	public List<OfferInfo> multiSearchByValue(HttpServletRequest request)
+			throws Exception {
+		String value = request.getParameter("value");
+		String limitStr = request.getParameter("limit");
+		String offsetStr = request.getParameter("offset");
+		int limit = 10;
+		int offset = 0;
+		if (limitStr != null) {
+			limit = Integer.parseInt(limitStr);
+		}
+		if (offsetStr != null) {
+			offset = Integer.parseInt(offsetStr);
+		}
+		return offerService.selectOfferByValue(value, limit, offset);
+	}
+
+	@RequestMapping(value = "/get/AVGsalary/{index}", method = RequestMethod.GET)
+	public float getAVGSalaryByIndex(@PathVariable("index") String index, HttpServletRequest request) throws Exception {
+		String value = request.getParameter("value");
+		List<OfferInfo> list = offerService.selectOfferByIndex(index, value, -1, -1);
+		int offerNumber = 0;
+		float salaryCount = 0;
+		for (int i = 0; i < list.size(); i++) {
+			String salaryYearStr = list.get(i).getSalaryYear();
+			float salaryYear = 0;
+			if (salaryYearStr.endsWith("w") || salaryYearStr.endsWith("W")) {
+				salaryYear = Float.parseFloat(salaryYearStr.substring(0, salaryYearStr.length() - 1));
+				salaryCount += salaryYear;
+				offerNumber++;
+			}
+		}
+
+		return salaryCount / offerNumber;
 	}
 
 	@RequestMapping(value = "/add/heat", method = RequestMethod.GET)

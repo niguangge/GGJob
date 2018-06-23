@@ -63,6 +63,16 @@ public class OfferServiceImpl implements OfferService {
 	}
 
 	@Override
+	public List<OfferInfo> selectOfferByIndex(String index, String value, int limit, int offset) throws Exception {
+		return mapper.selectOfferByIndex(index, value, limit, offset);
+	}
+	
+	@Override
+	public List<OfferInfo> selectOfferByValue(String value, int limit, int offset) throws Exception {
+		return mapper.selectOfferByValue(value, limit, offset);
+	}
+
+	@Override
 	public int getCount() throws Exception {
 		// TODO Auto-generated method stub
 		return mapper.getCount();
